@@ -1,0 +1,17 @@
+# kustomization.yaml contents
+resources:
+- ../base
+
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: deploy
+  spec:
+    template:
+      spec:
+        containers:
+        - name: nginx
+          image: nginx:1.7.3
+          $patch: replace
